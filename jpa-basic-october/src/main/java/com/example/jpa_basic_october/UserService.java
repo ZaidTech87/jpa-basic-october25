@@ -7,14 +7,16 @@ import java.util.List;
 
 @Service
 public class UserService {
-    @Autowired
-    UserReposatory userReposatory;
-    public String addUser(User user) {
-        userReposatory.save(user);
-        return "User added successfully";
 
+    @Autowired
+    private UserRepository userRepository;
+
+    public String addUser(User user) {
+        userRepository.save(user);
+        return "User added successfully!";
     }
+
     public List<User> getUserList() {
-        return  userReposatory.findAll();
+        return userRepository.findAll();
     }
 }

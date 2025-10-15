@@ -1,25 +1,31 @@
 package com.example.jpa_basic_october;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.*;
 
 @Entity
-@Table( name= "user_Data")
+@Table(name = "user_data") // keep table names lowercase for convention
 public class User {
 
-   private int id;
     @Id
-  private   String name;
-   private String mobile_no;
-   private int age;
-    public User(){}
-    public User(int id, String name, String mobile_no, int age) {
-        this.id = id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // <-- Auto-generate ID in MySQL
+    private int id;
+@Column(name = "first")
+    private String name;
+@Column(name = "second")
+    private String mobile_no;
+@Column(name = "third")
+    private int age;
+
+    // --- Constructors ---
+    public User() {}
+
+    public User(String name, String mobile_no, int age) {
         this.name = name;
         this.mobile_no = mobile_no;
         this.age = age;
     }
+
+    // --- Getters and Setters ---
     public int getId() {
         return id;
     }
@@ -27,23 +33,28 @@ public class User {
     public void setId(int id) {
         this.id = id;
     }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public String getMobile_no() {
         return mobile_no;
     }
+
     public void setMobile_no(String mobile_no) {
         this.mobile_no = mobile_no;
     }
+
     public int getAge() {
         return age;
     }
+
     public void setAge(int age) {
         this.age = age;
     }
-
 }
